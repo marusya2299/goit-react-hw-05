@@ -5,6 +5,8 @@ import MovieDetailsPage from '../../pages/MovieDetailsPage/MovieDetailsPage.jsx'
 import Navigation from '../../components/Navigation/Navigation.jsx';
 
 import { Routes, Route } from "react-router-dom";
+import MovieCast from '../MovieCast/MovieCast.jsx';
+import MovieReviews from '../MovieReviews/MovieReviews.jsx';
 export default function App(){
 
   return(
@@ -13,7 +15,13 @@ export default function App(){
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/movies" element={<MoviesPage />} />
+        <Route path="/movies/:movieId" element={<MovieDetailsPage />}>
+          <Route path="reviews" element={<MovieReviews />} />
+          <Route path="cast" element={<MovieCast />} />
+        </Route>
+
         <Route path="*" element={<NotFoundPage />} />
+        
       </Routes>
     </>
   )
