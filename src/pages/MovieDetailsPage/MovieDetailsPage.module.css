@@ -1,0 +1,77 @@
+.box{
+    background-color: rgb(134, 115, 209);
+    min-height: calc(100vh - 80px);
+    padding: 20px 100px 20px 100px;
+    
+}
+
+.imagePlusDescription{
+    padding: 20px;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: center;
+    gap: 40px;
+}
+
+.backButton, .additional{
+    text-decoration: none;
+    font-size: large;
+    color: rgb(48, 37, 91);
+}
+
+.backButton:focus,
+.backButton:hover,
+.additional:focus,
+.additional:hover{
+    color: rgb(255, 255, 255);
+    font-weight: bold;
+}
+
+.imageBox{
+}
+
+.image{
+    object-fit: contain;
+    height: auto;
+    width: 100%;
+}
+
+.descriptionsBox{
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    align-items: flex-start;
+    justify-content: space-between;
+}
+
+.nameMovie{
+    color: rgb(255, 255, 255);
+    text-transform: uppercase;
+    font-size: 25px;
+    font-weight: bold;
+}
+
+.descriptionTitle{
+    font-size: 20px;
+    font-weight: bold;
+
+}
+.description{
+    font-size: 18px;
+}
+
+.genresList{
+    display: flex;
+    flex-direction: row;
+    gap: 5px;
+
+    font-size: 18px;
+}
+
+.additionalBox{
+    display: flex;
+    flex-direction: row;
+    gap: 5px;
+}
+.additional{}

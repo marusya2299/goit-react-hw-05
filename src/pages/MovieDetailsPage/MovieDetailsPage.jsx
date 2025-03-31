@@ -5,6 +5,9 @@ import { fetchMovieDetails } from "../../api";
 import Loader from "../../components/Loader/Loader";
 import Error from "../../components/Error/Error";
 
+import { TiArrowLeftThick } from "react-icons/ti";
+import css from '../../pages/MovieDetailsPage/MovieDetailsPage.module.css';
+
 export default function MovieDetailsPage(){
     const location = useLocation();
     const backLink = location.state?.from || "/";
@@ -32,20 +35,41 @@ export default function MovieDetailsPage(){
       if (error) return <Error />;
 
     return(
-        <>
-            <Link to={backLink}>← Назад</Link>
-                <p>Title: {movie.title}</p>
-                <p>Genres: {movie.genres.map(g => g.name).join(", ")}</p>
-                <p>Overview: {movie.overview}</p>
-                <p>Release date: {movie.release_date}</p>
-                <p>Runtime: {movie.runtime}</p>
-                <img src={`https://image.tmdb.org/t/p/w1280${movie.backdrop_path}`} alt={movie.title} />
-                <img src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`} alt={movie.title} />
-            
-            <Link to='cast'>Cast</Link>
-            <Link to='reviews'>Reviews</Link>
+        <div className={css.box}>
+            <Link className={css.backButton} to={backLink}><TiArrowLeftThick />Go back</Link>
+
+            <div className={css.imagePlusDescription}>
+                <div className={css.imageBox}>
+                    <img className={css.image} src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`} alt={movie.title} />
+                </div>
+                
+                <div className={css.descriptionsBox}>
+                    <p className={css.nameMovie}>{movie.title}</p>
+
+                    <p className={css.descriptionTitle}>Genres</p>
+                    <ul className={css.genresList}>
+                        {movie.genres.map(genre => 
+                        <li className={css.genreElement} key={genre.id}>{genre.name}</li>)}
+                    </ul>
+
+                    <p className={css.descriptionTitle}>Overview</p>
+                    <p className={css.description}>{movie.overview}</p>
+
+                    <p className={css.descriptionTitle}>Release date</p>
+                    <p className={css.description}>{movie.release_date}</p>
+
+                    <p className={css.descriptionTitle}>Runtime</p>
+                    <p className={css.description}>Runtime: {movie.runtime}</p>
+                </div>
+            </div>
+
+            <p className={css.descriptionTitle}>Additional</p>
+            <div className={css.additionalBox}>
+                <Link className={css.additional} to='cast'>Cast</Link>
+                <Link className={css.additional} to='reviews'>Reviews</Link>
+            </div>
 
             <Outlet />
-        </>
+        </div>
     )
 }
