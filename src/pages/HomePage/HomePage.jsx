@@ -1,6 +1,11 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { fetchPopularMovies } from '../../api';
+
 import MovieList from '../../components/MovieList/MovieList';
+import Loader from '../../components/Loader/Loader';
+import Error from '../../components/Error/Error';
+
+import css from '../../pages/HomePage/HomePage.module.css';
 
 export default function HomePage(){
   const [movies, setMovies] = useState([]);
@@ -16,17 +21,17 @@ export default function HomePage(){
       } catch (err) {
         setError(err.message);
         setLoading(false);
-      }
-    };
+      }};
+
     getPopularMovies();
   }, []);
 
-  if (loading) return <p>Loading popular movies...</p>;
-  if (error) return <p>{error}</p>;
+    if (loading) return <Loader />;
+    if (error) return <Error />;
 
   return (
-    <div>
-      <h2>Popular Movies</h2>
+    <div className={css.box}>
+      <h2 className={css.header}>Trending today</h2>
       <MovieList movies={movies} />
     </div>
   );

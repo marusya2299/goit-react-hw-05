@@ -1,0 +1,28 @@
+.list{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 7px;
+
+}
+
+.listElement{
+
+}
+
+.listLink{
+    font-size: medium;
+    color: rgb(48, 37, 91);
+    text-decoration: none;
+}
+
+.listLink:focus,
+.listLink:hover{
+    color: rgb(255, 255, 255);
+    font-weight: bold;
+}
+
+.listName{
+
+}

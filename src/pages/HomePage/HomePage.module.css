@@ -1,0 +1,10 @@
+.header{
+    padding: 15px;
+    color: rgb(48, 37, 91);
+}
+
+.box{
+    background-color: rgb(134, 115, 209);
+    min-height: calc(100vh - 80px);
+    padding: 20px;
+}
