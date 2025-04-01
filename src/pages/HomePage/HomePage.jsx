@@ -26,8 +26,8 @@ export default function HomePage(){
     getPopularMovies();
   }, []);
 
-    if (loading) return <Loader />;
-    if (error) return <Error />;
+  if (loading) return <Loader />;
+  if (error) return <Error />;
 
   return (
     <div className={css.box}>

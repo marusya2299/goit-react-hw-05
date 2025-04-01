@@ -29,18 +29,19 @@ export default function MovieDetailsPage(){
             setLoading(false);
         }};
         getMovieDetails();
-      }, []);
+      }, [movieId]);
     
       if (loading) return <Loader />;
       if (error) return <Error />;
 
     return(
         <div className={css.box}>
-            <Link className={css.backButton} to={backLink}><TiArrowLeftThick />Go back</Link>
+            <Link className={css.backButton} to={backLink || "/movies"}><TiArrowLeftThick /> Go back</Link>
+            {console.log("Previous location:", location.state?.from)}
 
             <div className={css.imagePlusDescription}>
                 <div className={css.imageBox}>
-                    <img className={css.image} src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`} alt={movie.title} />
+                    <img className={css.image} src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`} alt={movie.title} width="500" />
                 </div>
                 
                 <div className={css.descriptionsBox}>
@@ -48,7 +49,7 @@ export default function MovieDetailsPage(){
 
                     <p className={css.descriptionTitle}>Genres</p>
                     <ul className={css.genresList}>
-                        {movie.genres.map(genre => 
+                        {movie.genres?.map(genre => 
                         <li className={css.genreElement} key={genre.id}>{genre.name}</li>)}
                     </ul>
 
@@ -65,8 +66,8 @@ export default function MovieDetailsPage(){
 
             <p className={css.descriptionTitle}>Additional</p>
             <div className={css.additionalBox}>
-                <Link className={css.additional} to='cast'>Cast</Link>
-                <Link className={css.additional} to='reviews'>Reviews</Link>
+                <Link className={css.additional} to='cast' state={{ from: '/movies' }}>Cast</Link>
+                <Link className={css.additional} to='reviews' state={{ from: '/movies' }}>Reviews</Link>
             </div>
 
             <Outlet />

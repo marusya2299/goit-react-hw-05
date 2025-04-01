@@ -1,0 +1,18 @@
+.list{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    gap: 20px;
+
+    padding: 20px;
+}
+
+.listElement{
+    width: 100px;
+}
+.imageBox{
+}
+.image{}
+.textBox{}
+.text{}

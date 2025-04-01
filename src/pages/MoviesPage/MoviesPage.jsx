@@ -2,6 +2,8 @@ import { useState } from "react";
 import { searchMovies } from "../../api";
 import MovieList from "../../components/MovieList/MovieList";
 
+import css from '../../pages/MoviesPage/MoviesPage.module.css';
+
 const MoviesPage = () => {
   const [query, setQuery] = useState("");
   const [movies, setMovies] = useState([]);
@@ -17,15 +19,16 @@ const MoviesPage = () => {
   };
 
   return (
-    <div>
-      <h1>Search Movies</h1>
+    <div className={css.box}>
+      <h2 className={css.header}>Search Movies</h2>
       <input
+        className={css.input}
         type="text"
         value={query}
-        onChange={(e) => setQuery(e.target.value)}
+        onChange={(event) => setQuery(event.target.value)}
         placeholder="Enter movie name"
       />
-      <button onClick={handleSearch}>Search</button>
+      <button className={css.button} onClick={handleSearch}>Search</button>
       <MovieList movies={movies} />
       
     </div>

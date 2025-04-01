@@ -1,0 +1,16 @@
+.list{
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+
+    padding: 20px;
+}
+
+.listElement{}
+
+.header{
+    font-weight: bold;
+    padding-bottom: 10px;
+}
+.text{}
+.message{}
