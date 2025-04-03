@@ -1,0 +1,11 @@
+.text{
+    text-align: center;
+    font-size: 32px;
+    margin-top: 50px;
+    color: rgb(48, 37, 91);
+}
+
+.accent{
+    color: rgb(195, 42, 42);
+    font-weight: bold;
+}
