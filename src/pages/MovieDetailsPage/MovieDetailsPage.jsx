@@ -1,5 +1,5 @@
-import { useParams, Link, useLocation, Outlet, useNavigate } from "react-router-dom";
-import { useEffect, useState } from 'react';
+import { useParams, Link, useLocation, Outlet } from "react-router-dom";
+import { useEffect, useState, useRef } from "react";
 import { fetchMovieDetails } from "../../api";
 
 import Loader from "../../components/Loader/Loader";
@@ -10,20 +10,12 @@ import css from '../../pages/MovieDetailsPage/MovieDetailsPage.module.css';
 
 export default function MovieDetailsPage() {
   const location = useLocation();
-
   const { movieId } = useParams();
 
+  const backLinkRef = useRef(location.state?.from || "/movies");
   const [movie, setMovie] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
-  const [backLink, setBackLink] = useState(null); 
-  
-  useEffect(() => {
-    if (!backLink) {
-      const initialBackLink = location.state?.from || '/movies'; 
-      setBackLink(initialBackLink); 
-    }
-  }, [location.state, backLink]);
 
   useEffect(() => {
     const getMovieDetails = async () => {
@@ -44,7 +36,7 @@ export default function MovieDetailsPage() {
 
   return (
     <div className={css.box}>
-      <Link className={css.backButton} to={backLink}>
+      <Link className={css.backButton} to={backLinkRef.current}>
         <TiArrowLeftThick /> Go back
       </Link>
 
@@ -81,16 +73,10 @@ export default function MovieDetailsPage() {
 
       <p className={css.descriptionTitle}>Additional</p>
       <div className={css.additionalBox}>
-        <Link
-          className={css.additional}
-          to="cast"
-        >
+        <Link className={css.additional} to="cast">
           Cast
         </Link>
-        <Link
-          className={css.additional}
-          to="reviews"
-        >
+        <Link className={css.additional} to="reviews">
           Reviews
         </Link>
       </div>
