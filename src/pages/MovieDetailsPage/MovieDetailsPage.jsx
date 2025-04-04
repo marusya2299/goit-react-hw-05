@@ -12,7 +12,7 @@ export default function MovieDetailsPage() {
   const location = useLocation();
   const { movieId } = useParams();
 
-  const backLinkRef = useRef(location.state?.from || "/movies");
+  const backLink = useRef(location.state?.from || "/movies");
   const [movie, setMovie] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
@@ -36,7 +36,7 @@ export default function MovieDetailsPage() {
 
   return (
     <div className={css.box}>
-      <Link className={css.backButton} to={backLinkRef.current}>
+      <Link className={css.backButton} to={backLink.current}>
         <TiArrowLeftThick /> Go back
       </Link>
 
